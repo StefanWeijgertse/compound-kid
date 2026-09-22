@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Compound Kid</title>
+<style>
+  :root {
+    --deep-blue: #040218;
+    --deeper-blue: #020010;
+    --gold: #ffb311;
+    --cream: #fbfaf3;
+    --red: #f44336;
+    --green: #4caf50;
+  }
+
+  /* Optional self-hosted heading font. If you don't upload PPNeueBit-Bold.woff2,
+     this rule simply never resolves and the system-font fallback below is used
+     instead — nothing breaks either way. No external font CDN is loaded on this
+     page, on purpose, so visitors' IPs are never sent to a third party before
+     they've had a chance to read a privacy policy. */
+  @font-face {
+    font-family: 'PPNeueBit';
+    src: url('PPNeueBit-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--deep-blue);
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--cream);
+    line-height: 1.7;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* ============================================
+     GALAXY BACKGROUND
+     ============================================ */
+  .galaxy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, var(--deeper-blue) 0%, #030115 20%, var(--deep-blue) 40%, var(--deep-blue) 60%, #030115 80%, var(--deeper-blue) 100%),
+      radial-gradient(ellipse at 20% 30%, rgba(30, 50, 120, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(20, 40, 100, 0.25) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 50%, rgba(40, 60, 140, 0.2) 0%, transparent 60%),
+      var(--deep-blue);
+  }
+
+  .trendline-icons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .trendline-icon {
+    position: absolute;
+    animation: trendlineTwinkle var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+    opacity: 0;
+  }
+
+  .trendline-icon.tiny { transform: scale(0.6); }
+  .trendline-icon.small { transform: scale(0.8); }
+  .trendline-icon.medium { transform: scale(1); }
+  .trendline-icon.large { transform: scale(1.2); }
+
+  .trendline-icon.red svg { filter: drop-shadow(0 0 4px rgba(244, 67, 54, 0.6)); }
+  .trendline-icon.green svg { filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.6)); }
+
+  @keyframes trendlineTwinkle {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.9; }
+  }
+  @keyframes trendlineTwinkleSlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  .trendline-icon.slow { animation-name: trendlineTwinkleSlow; }
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  .wrap {
+    position: relative;
+    z-index: 10;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    padding: 0 0 30px;
+    border-bottom: 1px solid rgba(255, 179, 17, 0.25);
+  }
+
+  h1 {
+    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0 0 16px 0;
+    text-shadow: 0 0 30px rgba(255, 179, 17, 0.4);
+  }
+
+  .subtitle {
+    color: rgba(251, 250, 243, 0.7);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .panel {
+    background: rgba(10, 8, 30, 0.55);
+    border: 1px solid rgba(255, 179, 17, 0.2);
+    border-radius: 14px;
+    padding: 36px 32px;
+    backdrop-filter: blur(2px);
+  }
+
+  @media (max-width: 600px) {
+    .panel { padding: 26px 20px; }
+    h1 { font-size: 2rem; }
+    .wrap { padding: 40px 16px 80px; }
+  }
+
+  h2 {
+    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 36px 0 12px;
+    letter-spacing: 0.02em;
+  }
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    color: var(--cream);
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 20px 0 8px;
+  }
+
+  p { margin: 0 0 14px; color: rgba(251, 250, 243, 0.88); }
+
+  ul { margin: 0 0 14px; padding-left: 22px; color: rgba(251, 250, 243, 0.88); }
+  li { margin-bottom: 6px; }
+
+  a { color: var(--gold); text-decoration: underline; text-decoration-color: rgba(255,179,17,0.4); }
+  a:hover { text-decoration-color: var(--gold); }
+
+  strong { color: var(--cream); }
+
+  .meta {
+    text-align: center;
+    color: rgba(251, 250, 243, 0.55);
+    font-size: 0.85rem;
+    margin-top: 30px;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(255, 179, 17, 0.15);
+    margin: 30px 0;
+    border: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="galaxy-bg"></div>
+<div class="trendline-icons" id="trendline-icons"></div>
+
+<div class="wrap">
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Last updated: September 22, 2026</p>
+  </header>
+
+  <div class="panel">
+
+    <p>This Privacy Policy explains what information is collected when you play <strong>this mobile game</strong> (the "App"), how it is used, and what choices you have. It's written to be read by a human, so if anything is unclear, the contact details at the bottom are there for exactly that.</p>
+
+    <h2>1. Who This Policy Covers</h2>
+    <p>This policy applies to anyone who downloads or plays the App on Android or iOS. The App is developed and published by an independent, individual developer (not a company or organization).</p>
+
+    <h2>2. Information the App Itself Does Not Collect</h2>
+    <p>The App's own code does not collect, transmit, or store any personal information on a server. Specifically:</p>
+    <ul>
+      <li>Your score, coin count, and high-score history are stored <strong>only on your device</strong> (in local app storage), never uploaded anywhere.</li>
+      <li>The App does not require an account, login, or email address to play.</li>
+      <li>The App does not access your contacts, photos, location, microphone, or camera.</li>
+    </ul>
+    <p>If you uninstall the App, this locally-stored data is deleted along with it.</p>
+
+    <h2>3. Information Collected by Third-Party Advertising</h2>
+    <p>The App is free to play and is supported by advertising served through <strong>Google AdMob</strong>. To deliver and measure ads, Google and its advertising partners may automatically collect certain technical information, which can include:</p>
+    <ul>
+      <li>Device identifiers (such as your device's advertising ID)</li>
+      <li>IP address and approximate (non-precise) location derived from it</li>
+      <li>App usage and interaction data related to ads (e.g. ads shown, clicked, or dismissed)</li>
+      <li>Device type, operating system, and general technical information</li>
+    </ul>
+    <p>This data collection is carried out by Google and its advertising partners as <strong>independent data controllers</strong>, under their own privacy policies — not by the App developer. You can review how Google handles this data here:</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><a href="https://www.google.com/about/company/user-consent-policy/" target="_blank" rel="noopener">Google's Partner Consent Requirements (EU)</a></li>
+      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">How Google uses information from sites/apps that use AdMob</a></li>
+    </ul>
+
+    <h2>4. Your Consent Choices (EEA, UK, and Switzerland)</h2>
+    <p>If you are located in the European Economic Area, the United Kingdom, or Switzerland, the App presents a consent dialog the first time it is opened, in accordance with Google's EU User Consent Policy and applicable law (including the GDPR and UK GDPR). Through this dialog you can:</p>
+    <ul>
+      <li>Consent to personalized advertising, or</li>
+      <li>Decline personalized advertising and receive non-personalized ads instead, or</li>
+      <li>View the full list of advertising partners and their individual purposes before deciding</li>
+    </ul>
+    <p>You can change your choice at any time by clearing the App's storage/data in your device settings, which will cause the consent dialog to appear again the next time you open the App.</p>
+
+    <h2>5. Your Rights Under GDPR</h2>
+    <p>If you are located in the EEA or UK, you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> — request confirmation of what personal data is processed about you</li>
+      <li><strong>Rectification</strong> — request correction of inaccurate data</li>
+      <li><strong>Erasure</strong> — request deletion of your data ("right to be forgotten")</li>
+      <li><strong>Restriction</strong> — request that processing of your data be limited</li>
+      <li><strong>Objection</strong> — object to processing, including for advertising purposes</li>
+      <li><strong>Data portability</strong> — request your data in a portable format</li>
+      <li><strong>Withdraw consent</strong> — at any time, without affecting the lawfulness of processing before withdrawal</li>
+      <li><strong>Lodge a complaint</strong> — with your local data protection supervisory authority</li>
+    </ul>
+    <p>Because the App itself does not collect or store personal data on a server, most of these rights are exercised directly with Google as the party actually processing advertising data. Google's own data subject request tools are linked in Section 3 above. For anything related to the App itself, you can also contact the developer using the details in Section 9.</p>
+
+    <h2>6. Your Rights Under US State Privacy Laws</h2>
+    <p>If you are a resident of California, Virginia, Colorado, Connecticut, Utah, or another US state with a comprehensive privacy law, you may have the right to:</p>
+    <ul>
+      <li><strong>Know</strong> what personal information is collected about you and how it's used</li>
+      <li><strong>Delete</strong> personal information collected about you</li>
+      <li><strong>Opt out</strong> of the "sale" or "sharing" of personal information, including for cross-context behavioral/targeted advertising</li>
+      <li><strong>Non-discrimination</strong> — you will not be denied service or charged differently for exercising these rights</li>
+      <li><strong>Correct</strong> inaccurate personal information (where applicable under state law)</li>
+    </ul>
+    <p>As noted above, advertising-related data collection is performed by Google as an independent controller. Google provides its own opt-out mechanisms for US state privacy rights, accessible via the links in Section 3.</p>
+
+    <h2>7. Children's Privacy</h2>
+    <p>The App is not directed at children under 13, and the developer does not knowingly collect personal information from children under 13. If the App is configured for a "family" or "designed for families" category on the app store, ad serving is restricted to non-personalized, contextual ads only, in compliance with Google's Families Policy and applicable children's privacy laws (including COPPA in the United States). If you believe a child has provided personal information through the App, please contact the developer using the details in Section 9 so it can be addressed.</p>
+
+    <h2>8. Data Retention &amp; International Transfers</h2>
+    <p>Locally-stored gameplay data (scores, high scores) remains on your device only, for as long as the App is installed, and is not retained by the developer in any other location. Advertising-related data collected by Google and its partners is retained and may be transferred internationally in accordance with their own policies, referenced in Section 3.</p>
+
+    <h2>9. Contact</h2>
+    <p>Questions about this policy, or requests relating to your privacy rights, can be sent to:</p>
+    <p><strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>This policy may be updated from time to time, for example to reflect changes in advertising partners or applicable law. The "Last updated" date at the top of this page will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated policy.</p>
+
+    <hr class="divider">
+    <p class="meta">This page is intentionally hosted independently of any other website or brand.</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var container = document.getElementById('trendline-icons');
+  if (!container) return;
+
+  var redSVG = '<svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<polyline points="4,8 12,16 18,12 26,22" stroke="#f44336" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+    '<polyline points="20,22 26,22 26,16" stroke="#f44336" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+    '</svg>';
+
+  var greenSVG = '<svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<polyline points="4,24 12,16 18,20 26,10" stroke="#4caf50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+    '<polyline points="20,10 26,10 26,16" stroke="#4caf50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+    '</svg>';
+
+  var sizes = ['tiny', 'small', 'small', 'medium', 'medium', 'large'];
+
+  var cols = window.innerWidth > 768 ? 6 : 4;
+  var rows = window.innerWidth > 768 ? 8 : 10;
+
+  var cellWidth = 100 / cols;
+  var cellHeight = 100 / rows;
+
+  for (var row = 0; row < rows; row++) {
+    for (var col = 0; col < cols; col++) {
+      var icon = document.createElement('div');
+      var size = sizes[Math.floor(Math.random() * sizes.length)];
+
+      var isGreen = (row + col) % 2 === 0;
+      if (Math.random() < 0.3) isGreen = !isGreen;
+
+      var color = isGreen ? 'green' : 'red';
+      var slow = Math.random() > 0.6 ? 'slow' : '';
+
+      icon.className = 'trendline-icon ' + size + ' ' + color + (slow ? ' ' + slow : '');
+      icon.innerHTML = isGreen ? greenSVG : redSVG;
+
+      var baseX = col * cellWidth + cellWidth / 2;
+      var baseY = row * cellHeight + cellHeight / 2;
+
+      var jitterX = (Math.random() - 0.5) * cellWidth * 0.6;
+      var jitterY = (Math.random() - 0.5) * cellHeight * 0.6;
+
+      icon.style.left = (baseX + jitterX) + '%';
+      icon.style.top = (baseY + jitterY) + '%';
+
+      icon.style.setProperty('--duration', (4 + Math.random() * 6) + 's');
+      icon.style.setProperty('--delay', (Math.random() * 5) + 's');
+
+      var baseScale = size === 'tiny' ? 0.6 : size === 'small' ? 0.8 : size === 'medium' ? 1 : 1.2;
+      icon.style.transform = 'scale(' + baseScale + ')';
+
+      container.appendChild(icon);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
