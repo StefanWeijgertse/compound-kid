@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Compound Kid</title>
+<title>Privacy Policy &amp; Terms of Use — Compound Kid</title>
 <style>
   :root {
     --deep-blue: #040218;
@@ -14,15 +14,23 @@
     --green: #4caf50;
   }
 
-  /* Optional self-hosted heading font. If you don't upload PPNeueBit-Bold.woff2,
-     this rule simply never resolves and the system-font fallback below is used
-     instead — nothing breaks either way. No external font CDN is loaded on this
-     page, on purpose, so visitors' IPs are never sent to a third party before
-     they've had a chance to read a privacy policy. */
+  /* Self-hosted headline + accent fonts (same family as the game itself).
+     If these files aren't present, the rules simply never resolve and the
+     system-font fallback below is used instead — nothing breaks either way.
+     No external font CDN is loaded on this page, on purpose, so visitors'
+     IPs are never sent to a third party before they've had a chance to
+     read a privacy policy. */
   @font-face {
     font-family: 'PPNeueBit';
     src: url('PPNeueBit-Bold.woff2') format('woff2');
     font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PPNeueBit';
+    src: url('PPNeueBit-Regular.woff2') format('woff2');
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
@@ -109,13 +117,22 @@
     z-index: 10;
     max-width: 760px;
     margin: 0 auto;
-    padding: 60px 24px 100px;
+    padding: 50px 24px 100px;
+  }
+
+  .cover {
+    display: block;
+    max-width: 320px;
+    width: 60%;
+    margin: 0 auto 28px;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 179, 17, 0.18);
   }
 
   header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 40px;
+    margin: 0 auto 32px;
     padding: 0 0 30px;
     border-bottom: 1px solid rgba(255, 179, 17, 0.25);
   }
@@ -130,9 +147,37 @@
   }
 
   .subtitle {
+    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: rgba(251, 250, 243, 0.7);
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin: 0;
+  }
+
+  /* In-page nav between the two documents */
+  nav.doc-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 24px 0 36px;
+    flex-wrap: wrap;
+  }
+
+  nav.doc-tabs a {
+    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    text-decoration: none;
+    color: var(--cream);
+    background: rgba(255, 179, 17, 0.08);
+    border: 1px solid rgba(255, 179, 17, 0.3);
+    border-radius: 999px;
+    padding: 9px 20px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  nav.doc-tabs a:hover {
+    background: rgba(255, 179, 17, 0.18);
+    color: var(--gold);
   }
 
   .panel {
@@ -141,12 +186,18 @@
     border-radius: 14px;
     padding: 36px 32px;
     backdrop-filter: blur(2px);
+    scroll-margin-top: 24px;
+  }
+
+  .panel + .panel {
+    margin-top: 40px;
   }
 
   @media (max-width: 600px) {
     .panel { padding: 26px 20px; }
     h1 { font-size: 2rem; }
-    .wrap { padding: 40px 16px 80px; }
+    .wrap { padding: 36px 16px 80px; }
+    .cover { width: 72%; }
   }
 
   h2 {
@@ -166,6 +217,22 @@
     margin: 20px 0 8px;
   }
 
+  .doc-title {
+    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--gold);
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .doc-updated {
+    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: rgba(251, 250, 243, 0.55);
+    font-size: 0.85rem;
+    margin: 0 0 28px;
+  }
+
   p { margin: 0 0 14px; color: rgba(251, 250, 243, 0.88); }
 
   ul { margin: 0 0 14px; padding-left: 22px; color: rgba(251, 250, 243, 0.88); }
@@ -175,6 +242,16 @@
   a:hover { text-decoration-color: var(--gold); }
 
   strong { color: var(--cream); }
+
+  .callout {
+    background: rgba(255, 179, 17, 0.08);
+    border: 1px solid rgba(255, 179, 17, 0.35);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 20px;
+  }
+  .callout p { margin: 0; color: var(--cream); }
+  .callout p + p { margin-top: 10px; }
 
   .meta {
     text-align: center;
@@ -189,6 +266,15 @@
     margin: 30px 0;
     border: none;
   }
+
+  footer.page-footer {
+    text-align: center;
+    margin-top: 44px;
+  }
+
+  footer.page-footer a {
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
@@ -197,14 +283,28 @@
 <div class="trendline-icons" id="trendline-icons"></div>
 
 <div class="wrap">
+
+  <img class="cover" src="Compound Kid - Cover.webp" alt="Compound Kid cover art">
+
   <header>
-    <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: September 22, 2026</p>
+    <h1>Legal</h1>
+    <p class="subtitle">Privacy Policy &amp; Terms of Use for Compound Kid</p>
   </header>
 
-  <div class="panel">
+  <nav class="doc-tabs">
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms of Use</a>
+  </nav>
 
-    <p>This Privacy Policy explains what information is collected when you play <strong>this mobile game</strong> (the "App"), how it is used, and what choices you have. It's written to be read by a human, so if anything is unclear, the contact details at the bottom are there for exactly that.</p>
+  <!-- ============================================
+       PRIVACY POLICY
+       ============================================ -->
+  <div class="panel" id="privacy">
+
+    <p class="doc-title">Privacy Policy</p>
+    <p class="doc-updated">Last updated: September 22, 2026</p>
+
+    <p>This Privacy Policy explains what information is collected when you play <strong>Compound Kid</strong> (the "App"), how it is used, and what choices you have. It's written to be read by a human, so if anything is unclear, the contact details at the bottom are there for exactly that.</p>
 
     <h2>1. Who This Policy Covers</h2>
     <p>This policy applies to anyone who downloads or plays the App on Android or iOS. The App is developed and published by an independent, individual developer (not a company or organization).</p>
@@ -280,9 +380,66 @@
     <h2>10. Changes to This Policy</h2>
     <p>This policy may be updated from time to time, for example to reflect changes in advertising partners or applicable law. The "Last updated" date at the top of this page will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated policy.</p>
 
-    <hr class="divider">
-    <p class="meta">This page is intentionally hosted independently of any other website or brand.</p>
   </div>
+
+  <!-- ============================================
+       TERMS OF USE
+       ============================================ -->
+  <div class="panel" id="terms">
+
+    <p class="doc-title">Terms of Use</p>
+    <p class="doc-updated">Last updated: September 24, 2026</p>
+
+    <div class="callout">
+      <p><strong>Entertainment, not financial advice.</strong> Compound Kid is a game. While it's built around a real financial concept — compound interest — and may leave you with genuine intuition or insight about how money grows over time, nothing in the App constitutes financial, investment, tax, or legal advice.</p>
+      <p>The numbers, outcomes, and "returns" you see in-game are simplified for gameplay and entertainment purposes, do not reflect real-world investment performance, and should never be used as the basis for an actual financial decision. Always consult a qualified, licensed professional before making financial decisions.</p>
+    </div>
+
+    <h2>1. Acceptance of These Terms</h2>
+    <p>By downloading, installing, or playing Compound Kid (the "App"), you agree to these Terms of Use. If you don't agree with them, please don't use the App.</p>
+
+    <h2>2. The App Is Provided "As Is"</h2>
+    <p>The App is provided free of charge, "as is" and "as available," without warranties of any kind, whether express or implied — including, without limitation, any warranty that the App will be uninterrupted, error-free, or fit for a particular purpose. You use the App at your own discretion and risk.</p>
+
+    <h2>3. Not Financial Advice</h2>
+    <p>As stated above, nothing displayed, calculated, or implied within the App — including any in-game currency, coin values, score charts, or explanatory text — is intended as, or should be relied upon as, financial, investment, tax, legal, or other professional advice. Any resemblance between the App's mechanics and real financial markets or products is for illustrative and entertainment purposes only.</p>
+
+    <h2>4. Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Reverse-engineer, decompile, or disassemble the App, except where applicable law expressly permits it</li>
+      <li>Use any automated system (bots, scripts, cheats) to interact with the App in a way not intended by normal human gameplay</li>
+      <li>Use the App for any unlawful purpose, or in a way that could damage, disable, or impair its operation</li>
+    </ul>
+
+    <h2>5. Intellectual Property</h2>
+    <p>All artwork, characters, code, copy, music, and other original content in the App belong to the developer, except for third-party components (such as the Phaser game framework and Google Mobile Ads SDK) which remain the property of their respective owners and are used under their own applicable licenses.</p>
+
+    <h2>6. Advertising &amp; Third-Party Services</h2>
+    <p>The App displays advertising served through Google AdMob. Your interaction with ads is governed by Google's own terms, in addition to this document. See the Privacy Policy above for details on what advertising-related data is collected and by whom.</p>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or data, arising out of or related to your use of — or inability to use — the App, including any financial decisions made after playing it.</p>
+
+    <h2>8. Changes to the App or These Terms</h2>
+    <p>The App and these Terms may be updated from time to time. The "Last updated" date at the top of this section will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated Terms.</p>
+
+    <h2>9. Governing Law</h2>
+    <p>These Terms are governed by the laws of the developer's country of residence, without regard to its conflict-of-law principles, except where applicable local consumer-protection law grants you rights that cannot be waived by agreement.</p>
+
+    <h2>10. Contact</h2>
+    <p>Questions about these Terms can be sent to:</p>
+    <p><strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+
+  </div>
+
+  <hr class="divider">
+  <p class="meta">This page is intentionally hosted independently of any other website or brand.</p>
+
+  <footer class="page-footer">
+    <a href="#privacy">Back to top ↑</a>
+  </footer>
+
 </div>
 
 <script>
