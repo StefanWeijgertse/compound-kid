@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compound Kid — Privacy Policy &amp; Terms of Use</title>
+<title>Compound Kid: Privacy Policy &amp; Terms of Use</title>
 <style>
   :root {
     --deep-blue: #040218;
     --deeper-blue: #020010;
     --gold: #ffb311;
     --cream: #fbfaf3;
-    --red: #f44336;
-    --green: #4caf50;
+    --burgundy: #6e0f22;
+    --game-blue: #2f6fed;
   }
 
   /* Self-hosted headline + body fonts (same family as the game itself).
      If these files aren't present, the rules simply never resolve and the
-     system-font fallback below is used instead — nothing breaks either way.
+     system-font fallback below is used instead, nothing breaks either way.
      No external font CDN is loaded on this page, on purpose, so visitors'
      IPs are never sent to a third party before they've had a chance to
      read a privacy policy. */
@@ -52,11 +52,14 @@
     letter-spacing: 0.01em;
     position: relative;
     min-height: 100vh;
-    font-size: 19px;
+    font-size: 22px;
   }
 
   /* ============================================
-     GALAXY BACKGROUND
+     BACKGROUND LAYERS
+     Layer 0: solid galaxy gradient (fixed)
+     Layer 1: tiled Grid_Blue.webp with a slight parallax drift
+     Layer 10: actual content
      ============================================ */
   .galaxy-bg {
     position: fixed;
@@ -75,42 +78,29 @@
       var(--deep-blue);
   }
 
-  .trendline-icons {
+  .grid-parallax-wrap {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     height: 100svh;
-    pointer-events: none;
-    overflow: hidden;
     z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
   }
 
-  .trendline-icon {
+  .grid-parallax-img {
     position: absolute;
-    animation: trendlineTwinkle var(--duration) ease-in-out infinite;
-    animation-delay: var(--delay);
-    opacity: 0;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    background-image: url('Grid_Blue.webp');
+    background-repeat: repeat;
+    opacity: 0.32;
+    will-change: transform;
   }
-
-  .trendline-icon.tiny { transform: scale(0.6); }
-  .trendline-icon.small { transform: scale(0.8); }
-  .trendline-icon.medium { transform: scale(1); }
-  .trendline-icon.large { transform: scale(1.2); }
-
-  .trendline-icon.red svg { filter: drop-shadow(0 0 4px rgba(244, 67, 54, 0.6)); }
-  .trendline-icon.green svg { filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.6)); }
-
-  @keyframes trendlineTwinkle {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.9; }
-  }
-  @keyframes trendlineTwinkleSlow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-  }
-  .trendline-icon.slow { animation-name: trendlineTwinkleSlow; }
 
   /* ============================================
      LAYOUT
@@ -118,7 +108,7 @@
   .wrap {
     position: relative;
     z-index: 10;
-    max-width: 760px;
+    max-width: 780px;
     margin: 0 auto;
     padding: 50px 24px 100px;
   }
@@ -132,92 +122,136 @@
   h1 {
     font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
-    font-size: 3.2rem;
-    color: var(--gold);
+    font-size: 4rem;
     margin: 0;
-    text-shadow: 0 0 30px rgba(255, 179, 17, 0.4);
+    line-height: 1.05;
   }
 
   .cover {
     display: block;
-    max-width: 320px;
-    width: 60%;
-    margin: 8px auto 28px;
+    max-width: 340px;
+    width: 62%;
+    margin: 14px auto 32px;
     border-radius: 18px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 179, 17, 0.18);
   }
 
   .intro {
-    max-width: 660px;
+    max-width: 680px;
     margin: 0 auto 40px;
-    text-align: center;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: rgba(251, 250, 243, 0.92);
-    padding-bottom: 34px;
+    text-align: left;
+    font-size: 1.3rem;
+    line-height: 1.85;
+    color: rgba(251, 250, 243, 0.94);
+    padding-bottom: 36px;
     border-bottom: 1px solid rgba(255, 179, 17, 0.25);
   }
 
-  .intro p { margin: 0 0 16px; color: rgba(251, 250, 243, 0.92); }
+  .intro p { margin: 0 0 20px; color: rgba(251, 250, 243, 0.94); }
   .intro p:last-child { margin-bottom: 0; }
   .intro strong { color: var(--gold); }
 
-  /* In-page nav between the two documents */
-  nav.doc-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 32px 0 36px;
-    flex-wrap: wrap;
+  /* ============================================
+     OUTLINED GAME-STYLE HEADERS
+     ============================================ */
+  .stroke-gold-burgundy {
+    color: var(--burgundy);
+    -webkit-text-stroke: 3px var(--gold);
+    text-stroke: 3px var(--gold);
+    paint-order: stroke fill;
+    filter: drop-shadow(0 0 22px rgba(255, 179, 17, 0.35));
   }
 
-  nav.doc-tabs a {
-    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 700;
-    text-decoration: none;
+  .stroke-blue-white {
     color: var(--cream);
-    background: rgba(255, 179, 17, 0.08);
-    border: 1px solid rgba(255, 179, 17, 0.3);
-    border-radius: 999px;
-    padding: 10px 22px;
-    font-size: 1rem;
-    letter-spacing: 0.03em;
-    transition: background 0.15s ease, color 0.15s ease;
+    -webkit-text-stroke: 3px var(--game-blue);
+    text-stroke: 3px var(--game-blue);
+    paint-order: stroke fill;
+    filter: drop-shadow(0 0 16px rgba(47, 111, 237, 0.4));
   }
 
-  nav.doc-tabs a:hover {
-    background: rgba(255, 179, 17, 0.18);
-    color: var(--gold);
+  @supports not (-webkit-text-stroke: 1px black) {
+    .stroke-gold-burgundy { color: var(--gold); }
+    .stroke-blue-white { color: var(--cream); }
   }
 
-  .panel {
+  /* ============================================
+     ACCORDION
+     ============================================ */
+  .accordion {
+    margin-top: 20px;
+  }
+
+  .accordion-item {
     background: rgba(10, 8, 30, 0.55);
     border: 1px solid rgba(255, 179, 17, 0.2);
     border-radius: 14px;
-    padding: 36px 32px;
     backdrop-filter: blur(2px);
-    scroll-margin-top: 24px;
+    overflow: hidden;
   }
 
-  .panel + .panel {
-    margin-top: 40px;
+  .accordion-item + .accordion-item {
+    margin-top: 18px;
+  }
+
+  .accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 22px 26px;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .accordion-title {
+    font-weight: 700;
+    font-size: 1.9rem;
+    letter-spacing: 0.02em;
+  }
+
+  .accordion-caret {
+    flex-shrink: 0;
+    font-size: 1.6rem;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+    line-height: 1;
+  }
+
+  .accordion-item.open .accordion-caret {
+    transform: rotate(180deg);
+  }
+
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .accordion-panel-inner {
+    padding: 0 26px 30px;
   }
 
   @media (max-width: 600px) {
-    .panel { padding: 26px 20px; }
-    h1 { font-size: 2.3rem; }
+    .accordion-header { padding: 18px 20px; }
+    .accordion-panel-inner { padding: 0 20px 24px; }
+    .accordion-title { font-size: 1.55rem; }
+    h1 { font-size: 2.9rem; }
     .wrap { padding: 36px 16px 80px; }
-    .cover { width: 72%; }
-    body { font-size: 18px; }
-    .intro { font-size: 1.05rem; }
+    .cover { width: 74%; }
+    .intro { font-size: 1.15rem; }
   }
 
   h2 {
     font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
     color: var(--gold);
-    font-size: 1.55rem;
-    margin: 40px 0 14px;
+    font-size: 1.7rem;
+    margin: 38px 0 14px;
     letter-spacing: 0.02em;
   }
   h2:first-child { margin-top: 0; }
@@ -225,23 +259,14 @@
   h3 {
     font-weight: 700;
     color: var(--cream);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin: 22px 0 8px;
-  }
-
-  .doc-title {
-    font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 700;
-    color: var(--gold);
-    font-size: 2rem;
-    margin: 0 0 6px;
-    letter-spacing: 0.02em;
   }
 
   .doc-updated {
     font-weight: 400;
     color: rgba(251, 250, 243, 0.55);
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin: 0 0 28px;
   }
 
@@ -268,252 +293,257 @@
   .meta {
     text-align: center;
     color: rgba(251, 250, 243, 0.55);
-    font-size: 0.95rem;
-    margin-top: 30px;
+    font-size: 1rem;
+    margin-top: 34px;
   }
 
   .divider {
     height: 1px;
     background: rgba(255, 179, 17, 0.15);
-    margin: 30px 0;
+    margin: 34px 0;
     border: none;
-  }
-
-  footer.page-footer {
-    text-align: center;
-    margin-top: 44px;
-  }
-
-  footer.page-footer a {
-    font-size: 0.95rem;
   }
 </style>
 </head>
 <body>
 
 <div class="galaxy-bg"></div>
-<div class="trendline-icons" id="trendline-icons"></div>
+<div class="grid-parallax-wrap">
+  <div class="grid-parallax-img" id="grid-parallax"></div>
+</div>
 
 <div class="wrap">
 
   <header>
-    <h1>Every rich person in the world became a Compound Kid before their wealth exploded. Now, you can too.</h1>
+    <h1 class="stroke-gold-burgundy">Every rich person in the world became a Compound Kid before their wealth exploded. Now, you can too.</h1>
   </header>
 
   <img class="cover" src="Compound Kid - Cover.webp" alt="Compound Kid cover art">
 
   <div class="intro">
-    <p>Here's a fact most people never feel until it's too late to use it: money that compounds doesn't grow in a straight line — it grows in a curve. Flat for a long time. Then, suddenly, steep.</p>
-    <p><strong>Compound Kid</strong> is a free, one-tap arcade game built around that single curve. You run, you jump, you collect coins — and every coin you collect doesn't just add to your score, it compounds. The longer you survive, the faster your value climbs. Most players don't believe the number on their screen until they've seen it happen to themselves.</p>
-    <p>It takes ten seconds to understand and about that long to lose your first run. That's the point. You'll be back.</p>
+    <p>Here is a fact most people never feel until it is too late to use it. Money that compounds does not grow in a straight line. It grows in a curve: flat for a long time, then suddenly steep. Warren Buffett earned the vast majority of his fortune after most people retire, not because he got smarter later in life, but because compounding rewards time far more than it rewards timing.</p>
+    <p><strong>Compound Kid</strong> turns that curve into a game you can feel in under a minute. Tap to jump, collect coins, and watch your in-game value compound with every single one you grab. Not add. Compound. The tenth coin is worth more than the first, and that difference is not an accident. It is the entire lesson, built directly into the physics of the game.</p>
+    <p>There is no tutorial to sit through and no account to create. You open it, you tap, and within your first few runs you will lose, more than once, badly. That is by design too. Every attempt sharpens your timing, and every high score you beat proves the same idea that got Compound Kid made in the first place: small, repeated gains add up to something that looks nothing like small, once you give it room to grow.</p>
+    <p>Nothing in the game is financial advice, and it was never meant to be. It is a short, free arcade game with a real idea sitting underneath it, built for anyone who has heard the phrase "compound interest" and nodded along without quite feeling what it meant. Now you can feel it, one coin at a time.</p>
   </div>
 
-  <nav class="doc-tabs">
-    <a href="#privacy">Privacy Policy</a>
-    <a href="#terms">Terms of Use</a>
-  </nav>
+  <div class="accordion" id="accordion">
 
-  <!-- ============================================
-       PRIVACY POLICY
-       ============================================ -->
-  <div class="panel" id="privacy">
+    <!-- ============================================
+         PRIVACY POLICY
+         ============================================ -->
+    <div class="accordion-item" data-id="privacy">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        <span class="accordion-title stroke-blue-white">Privacy Policy</span>
+        <span class="accordion-caret">&#9662;</span>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
 
-    <p class="doc-title">Privacy Policy</p>
-    <p class="doc-updated">Last updated: September 24, 2026</p>
+          <p class="doc-updated">Last updated: September 24, 2026</p>
 
-    <p>This Privacy Policy explains what information is collected when you play <strong>Compound Kid</strong> (the "App"), how it is used, and what choices you have. It's written to be read by a human, so if anything is unclear, the contact details at the bottom are there for exactly that.</p>
+          <p>This Privacy Policy explains what information is collected when you play <strong>Compound Kid</strong> (the "App"), how it is used, and what choices you have. It is written to be read by a human, so if anything is unclear, the contact details at the bottom are there for exactly that.</p>
 
-    <h2>1. Who This Policy Covers</h2>
-    <p>This policy applies to anyone who downloads or plays the App on Android or iOS. The App is developed and published by an independent, individual developer (not a company or organization).</p>
+          <h2>1. Who This Policy Covers</h2>
+          <p>This policy applies to anyone who downloads or plays the App on Android or iOS. The App is developed and published by an independent, individual developer, not a company or organization.</p>
 
-    <h2>2. Information the App Itself Does Not Collect</h2>
-    <p>The App's own code does not collect, transmit, or store any personal information on a server. Specifically:</p>
-    <ul>
-      <li>Your score, coin count, and high-score history are stored <strong>only on your device</strong> (in local app storage), never uploaded anywhere.</li>
-      <li>The App does not require an account, login, or email address to play.</li>
-      <li>The App does not access your contacts, photos, location, microphone, or camera.</li>
-    </ul>
-    <p>If you uninstall the App, this locally-stored data is deleted along with it.</p>
+          <h2>2. Information the App Itself Does Not Collect</h2>
+          <p>The App's own code does not collect, transmit, or store any personal information on a server. Specifically:</p>
+          <ul>
+            <li>Your score, coin count, and high-score history are stored <strong>only on your device</strong>, in local app storage, never uploaded anywhere.</li>
+            <li>The App does not require an account, login, or email address to play.</li>
+            <li>The App does not access your contacts, photos, location, microphone, or camera.</li>
+          </ul>
+          <p>If you uninstall the App, this locally-stored data is deleted along with it.</p>
 
-    <h2>3. Information Collected by Third-Party Advertising</h2>
-    <p>The App is free to play and is supported by advertising served through <strong>Google AdMob</strong>. To deliver and measure ads, Google and its advertising partners may automatically collect certain technical information, which can include:</p>
-    <ul>
-      <li>Device identifiers (such as your device's advertising ID)</li>
-      <li>IP address and approximate (non-precise) location derived from it</li>
-      <li>App usage and interaction data related to ads (e.g. ads shown, clicked, or dismissed)</li>
-      <li>Device type, operating system, and general technical information</li>
-    </ul>
-    <p>This data collection is carried out by Google and its advertising partners as <strong>independent data controllers</strong>, under their own privacy policies — not by the App developer. You can review how Google handles this data here:</p>
-    <ul>
-      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
-      <li><a href="https://www.google.com/about/company/user-consent-policy/" target="_blank" rel="noopener">Google's Partner Consent Requirements (EU)</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">How Google uses information from sites/apps that use AdMob</a></li>
-    </ul>
+          <h2>3. Information Collected by Third-Party Advertising</h2>
+          <p>The App is free to play and is supported by advertising served through <strong>Google AdMob</strong>. To deliver and measure ads, Google and its advertising partners may automatically collect certain technical information, which can include:</p>
+          <ul>
+            <li>Device identifiers, such as your device's advertising ID</li>
+            <li>IP address and approximate, non-precise location derived from it</li>
+            <li>App usage and interaction data related to ads, such as ads shown, clicked, or dismissed</li>
+            <li>Device type, operating system, and general technical information</li>
+          </ul>
+          <p>This data collection is carried out by Google and its advertising partners as <strong>independent data controllers</strong>, under their own privacy policies, not by the App developer. You can review how Google handles this data here:</p>
+          <ul>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+            <li><a href="https://www.google.com/about/company/user-consent-policy/" target="_blank" rel="noopener">Google's Partner Consent Requirements (EU)</a></li>
+            <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">How Google uses information from sites/apps that use AdMob</a></li>
+          </ul>
 
-    <h2>4. Your Consent Choices (EEA, UK, and Switzerland)</h2>
-    <p>If you are located in the European Economic Area, the United Kingdom, or Switzerland, the App presents a consent dialog the first time it is opened, in accordance with Google's EU User Consent Policy and applicable law (including the GDPR and UK GDPR). Through this dialog you can:</p>
-    <ul>
-      <li>Consent to personalized advertising, or</li>
-      <li>Decline personalized advertising and receive non-personalized ads instead, or</li>
-      <li>View the full list of advertising partners and their individual purposes before deciding</li>
-    </ul>
-    <p>You can change your choice at any time by clearing the App's storage/data in your device settings, which will cause the consent dialog to appear again the next time you open the App.</p>
+          <h2>4. Your Consent Choices (EEA, UK, and Switzerland)</h2>
+          <p>If you are located in the European Economic Area, the United Kingdom, or Switzerland, the App presents a consent dialog the first time it is opened, in accordance with Google's EU User Consent Policy and applicable law, including the GDPR and UK GDPR. Through this dialog you can:</p>
+          <ul>
+            <li>Consent to personalized advertising, or</li>
+            <li>Decline personalized advertising and receive non-personalized ads instead, or</li>
+            <li>View the full list of advertising partners and their individual purposes before deciding</li>
+          </ul>
+          <p>You can change your choice at any time by clearing the App's storage or data in your device settings, which will cause the consent dialog to appear again the next time you open the App.</p>
 
-    <h2>5. Your Rights Under GDPR</h2>
-    <p>If you are located in the EEA or UK, you have the right to:</p>
-    <ul>
-      <li><strong>Access</strong> — request confirmation of what personal data is processed about you</li>
-      <li><strong>Rectification</strong> — request correction of inaccurate data</li>
-      <li><strong>Erasure</strong> — request deletion of your data ("right to be forgotten")</li>
-      <li><strong>Restriction</strong> — request that processing of your data be limited</li>
-      <li><strong>Objection</strong> — object to processing, including for advertising purposes</li>
-      <li><strong>Data portability</strong> — request your data in a portable format</li>
-      <li><strong>Withdraw consent</strong> — at any time, without affecting the lawfulness of processing before withdrawal</li>
-      <li><strong>Lodge a complaint</strong> — with your local data protection supervisory authority</li>
-    </ul>
-    <p>Because the App itself does not collect or store personal data on a server, most of these rights are exercised directly with Google as the party actually processing advertising data. Google's own data subject request tools are linked in Section 3 above. For anything related to the App itself, you can also contact the developer using the details in Section 9.</p>
+          <h2>5. Your Rights Under GDPR</h2>
+          <p>If you are located in the EEA or UK, you have the right to:</p>
+          <ul>
+            <li><strong>Access</strong>: request confirmation of what personal data is processed about you</li>
+            <li><strong>Rectification</strong>: request correction of inaccurate data</li>
+            <li><strong>Erasure</strong>: request deletion of your data, also known as the right to be forgotten</li>
+            <li><strong>Restriction</strong>: request that processing of your data be limited</li>
+            <li><strong>Objection</strong>: object to processing, including for advertising purposes</li>
+            <li><strong>Data portability</strong>: request your data in a portable format</li>
+            <li><strong>Withdraw consent</strong>: at any time, without affecting the lawfulness of processing before withdrawal</li>
+            <li><strong>Lodge a complaint</strong>: with your local data protection supervisory authority</li>
+          </ul>
+          <p>Because the App itself does not collect or store personal data on a server, most of these rights are exercised directly with Google as the party actually processing advertising data. Google's own data subject request tools are linked in Section 3 above. For anything related to the App itself, you can also contact the developer using the details in Section 9.</p>
 
-    <h2>6. Your Rights Under US State Privacy Laws</h2>
-    <p>If you are a resident of California, Virginia, Colorado, Connecticut, Utah, or another US state with a comprehensive privacy law, you may have the right to:</p>
-    <ul>
-      <li><strong>Know</strong> what personal information is collected about you and how it's used</li>
-      <li><strong>Delete</strong> personal information collected about you</li>
-      <li><strong>Opt out</strong> of the "sale" or "sharing" of personal information, including for cross-context behavioral/targeted advertising</li>
-      <li><strong>Non-discrimination</strong> — you will not be denied service or charged differently for exercising these rights</li>
-      <li><strong>Correct</strong> inaccurate personal information (where applicable under state law)</li>
-    </ul>
-    <p>As noted above, advertising-related data collection is performed by Google as an independent controller. Google provides its own opt-out mechanisms for US state privacy rights, accessible via the links in Section 3.</p>
+          <h2>6. Your Rights Under US State Privacy Laws</h2>
+          <p>If you are a resident of California, Virginia, Colorado, Connecticut, Utah, or another US state with a comprehensive privacy law, you may have the right to:</p>
+          <ul>
+            <li><strong>Know</strong> what personal information is collected about you and how it is used</li>
+            <li><strong>Delete</strong> personal information collected about you</li>
+            <li><strong>Opt out</strong> of the sale or sharing of personal information, including for cross-context behavioral or targeted advertising</li>
+            <li><strong>Non-discrimination</strong>: you will not be denied service or charged differently for exercising these rights</li>
+            <li><strong>Correct</strong> inaccurate personal information, where applicable under state law</li>
+          </ul>
+          <p>As noted above, advertising-related data collection is performed by Google as an independent controller. Google provides its own opt-out mechanisms for US state privacy rights, accessible via the links in Section 3.</p>
 
-    <h2>7. Children's Privacy</h2>
-    <p>The App is not directed at children under 13, and the developer does not knowingly collect personal information from children under 13. If the App is configured for a "family" or "designed for families" category on the app store, ad serving is restricted to non-personalized, contextual ads only, in compliance with Google's Families Policy and applicable children's privacy laws (including COPPA in the United States). If you believe a child has provided personal information through the App, please contact the developer using the details in Section 9 so it can be addressed.</p>
+          <h2>7. Children's Privacy</h2>
+          <p>The App is not directed at children under 13, and the developer does not knowingly collect personal information from children under 13. If the App is configured for a family or "designed for families" category on the app store, ad serving is restricted to non-personalized, contextual ads only, in compliance with Google's Families Policy and applicable children's privacy laws, including COPPA in the United States. If you believe a child has provided personal information through the App, please contact the developer using the details in Section 9 so it can be addressed.</p>
 
-    <h2>8. Data Retention &amp; International Transfers</h2>
-    <p>Locally-stored gameplay data (scores, high scores) remains on your device only, for as long as the App is installed, and is not retained by the developer in any other location. Advertising-related data collected by Google and its partners is retained and may be transferred internationally in accordance with their own policies, referenced in Section 3.</p>
+          <h2>8. Data Retention and International Transfers</h2>
+          <p>Locally-stored gameplay data, such as scores and high scores, remains on your device only, for as long as the App is installed, and is not retained by the developer in any other location. Advertising-related data collected by Google and its partners is retained and may be transferred internationally in accordance with their own policies, referenced in Section 3.</p>
 
-    <h2>9. Contact</h2>
-    <p>Questions about this policy, or requests relating to your privacy rights, can be sent to:</p>
-    <p><strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+          <h2>9. Contact</h2>
+          <p>Questions about this policy, or requests relating to your privacy rights, can be sent to:</p>
+          <p><strong>[YOUR CONTACT EMAIL HERE]</strong></p>
 
-    <h2>10. Changes to This Policy</h2>
-    <p>This policy may be updated from time to time, for example to reflect changes in advertising partners or applicable law. The "Last updated" date at the top of this section will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated policy.</p>
+          <h2>10. Changes to This Policy</h2>
+          <p>This policy may be updated from time to time, for example to reflect changes in advertising partners or applicable law. The "Last updated" date at the top of this section will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated policy.</p>
 
-  </div>
-
-  <!-- ============================================
-       TERMS OF USE
-       ============================================ -->
-  <div class="panel" id="terms">
-
-    <p class="doc-title">Terms of Use</p>
-    <p class="doc-updated">Last updated: September 24, 2026</p>
-
-    <div class="callout">
-      <p><strong>Entertainment, not financial advice.</strong> Compound Kid is a game. While it's built around a real financial concept — compound interest — and may leave you with genuine intuition or insight about how money grows over time, nothing in the App constitutes financial, investment, tax, or legal advice.</p>
-      <p>The numbers, outcomes, and "returns" you see in-game are simplified for gameplay and entertainment purposes, do not reflect real-world investment performance, and should never be used as the basis for an actual financial decision. Always consult a qualified, licensed professional before making financial decisions.</p>
+        </div>
+      </div>
     </div>
 
-    <h2>1. Acceptance of These Terms</h2>
-    <p>By downloading, installing, or playing Compound Kid (the "App"), you agree to these Terms of Use. If you don't agree with them, please don't use the App.</p>
+    <!-- ============================================
+         TERMS OF USE
+         ============================================ -->
+    <div class="accordion-item" data-id="terms">
+      <button class="accordion-header" type="button" aria-expanded="false">
+        <span class="accordion-title stroke-blue-white">Terms of Use</span>
+        <span class="accordion-caret">&#9662;</span>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
 
-    <h2>2. The App Is Provided "As Is"</h2>
-    <p>The App is provided free of charge, "as is" and "as available," without warranties of any kind, whether express or implied — including, without limitation, any warranty that the App will be uninterrupted, error-free, or fit for a particular purpose. You use the App at your own discretion and risk.</p>
+          <p class="doc-updated">Last updated: September 24, 2026</p>
 
-    <h2>3. Not Financial Advice</h2>
-    <p>As stated above, nothing displayed, calculated, or implied within the App — including any in-game currency, coin values, score charts, or explanatory text — is intended as, or should be relied upon as, financial, investment, tax, legal, or other professional advice. Any resemblance between the App's mechanics and real financial markets or products is for illustrative and entertainment purposes only.</p>
+          <div class="callout">
+            <p><strong>Entertainment, not financial advice.</strong> Compound Kid is a game. While it is built around a real financial concept, compound interest, and may leave you with genuine intuition about how money grows over time, nothing in the App constitutes financial, investment, tax, or legal advice.</p>
+            <p>The numbers, outcomes, and "returns" you see in-game are simplified for gameplay and entertainment purposes, do not reflect real-world investment performance, and should never be used as the basis for an actual financial decision. Always consult a qualified, licensed professional before making financial decisions.</p>
+          </div>
 
-    <h2>4. Acceptable Use</h2>
-    <p>You agree not to:</p>
-    <ul>
-      <li>Reverse-engineer, decompile, or disassemble the App, except where applicable law expressly permits it</li>
-      <li>Use any automated system (bots, scripts, cheats) to interact with the App in a way not intended by normal human gameplay</li>
-      <li>Use the App for any unlawful purpose, or in a way that could damage, disable, or impair its operation</li>
-    </ul>
+          <h2>1. Acceptance of These Terms</h2>
+          <p>By downloading, installing, or playing Compound Kid (the "App"), you agree to these Terms of Use. If you do not agree with them, please do not use the App.</p>
 
-    <h2>5. Intellectual Property</h2>
-    <p>All artwork, characters, code, copy, music, and other original content in the App belong to the developer, except for third-party components (such as the Phaser game framework and Google Mobile Ads SDK) which remain the property of their respective owners and are used under their own applicable licenses.</p>
+          <h2>2. The App Is Provided "As Is"</h2>
+          <p>The App is provided free of charge, "as is" and "as available," without warranties of any kind, whether express or implied, including any warranty that the App will be uninterrupted, error-free, or fit for a particular purpose. You use the App at your own discretion and risk.</p>
 
-    <h2>6. Advertising &amp; Third-Party Services</h2>
-    <p>The App displays advertising served through Google AdMob. Your interaction with ads is governed by Google's own terms, in addition to this document. See the Privacy Policy above for details on what advertising-related data is collected and by whom.</p>
+          <h2>3. Not Financial Advice</h2>
+          <p>As stated above, nothing displayed, calculated, or implied within the App, including any in-game currency, coin values, score charts, or explanatory text, is intended as, or should be relied upon as, financial, investment, tax, legal, or other professional advice. Any resemblance between the App's mechanics and real financial markets or products is for illustrative and entertainment purposes only.</p>
 
-    <h2>7. Limitation of Liability</h2>
-    <p>To the fullest extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or data, arising out of or related to your use of — or inability to use — the App, including any financial decisions made after playing it.</p>
+          <h2>4. Acceptable Use</h2>
+          <p>You agree not to:</p>
+          <ul>
+            <li>Reverse-engineer, decompile, or disassemble the App, except where applicable law expressly permits it</li>
+            <li>Use any automated system, such as bots, scripts, or cheats, to interact with the App in a way not intended by normal human gameplay</li>
+            <li>Use the App for any unlawful purpose, or in a way that could damage, disable, or impair its operation</li>
+          </ul>
 
-    <h2>8. Changes to the App or These Terms</h2>
-    <p>The App and these Terms may be updated from time to time. The "Last updated" date at the top of this section will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated Terms.</p>
+          <h2>5. Intellectual Property</h2>
+          <p>All artwork, characters, code, copy, music, and other original content in the App belong to the developer, except for third-party components, such as the Phaser game framework and Google Mobile Ads SDK, which remain the property of their respective owners and are used under their own applicable licenses.</p>
 
-    <h2>9. Governing Law</h2>
-    <p>These Terms are governed by the laws of the developer's country of residence, without regard to its conflict-of-law principles, except where applicable local consumer-protection law grants you rights that cannot be waived by agreement.</p>
+          <h2>6. Advertising and Third-Party Services</h2>
+          <p>The App displays advertising served through Google AdMob. Your interaction with ads is governed by Google's own terms, in addition to this document. See the Privacy Policy above for details on what advertising-related data is collected and by whom.</p>
 
-    <h2>10. Contact</h2>
-    <p>Questions about these Terms can be sent to:</p>
-    <p><strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+          <h2>7. Limitation of Liability</h2>
+          <p>To the fullest extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or data, arising out of or related to your use of, or inability to use, the App, including any financial decisions made after playing it.</p>
+
+          <h2>8. Changes to the App or These Terms</h2>
+          <p>The App and these Terms may be updated from time to time. The "Last updated" date at the top of this section will always reflect the most recent revision. Continued use of the App after changes are posted constitutes acceptance of the updated Terms.</p>
+
+          <h2>9. Governing Law</h2>
+          <p>These Terms are governed by the laws of the developer's country of residence, without regard to its conflict-of-law principles, except where applicable local consumer-protection law grants you rights that cannot be waived by agreement.</p>
+
+          <h2>10. Contact</h2>
+          <p>Questions about these Terms can be sent to:</p>
+          <p><strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+
+        </div>
+      </div>
+    </div>
 
   </div>
 
   <hr class="divider">
   <p class="meta">This page is intentionally hosted independently of any other website or brand.</p>
 
-  <footer class="page-footer">
-    <a href="#privacy">Back to top ↑</a>
-  </footer>
-
 </div>
 
 <script>
 (function() {
-  var container = document.getElementById('trendline-icons');
-  if (!container) return;
+  // ---- Accordion: only one section open at a time ----
+  var items = document.querySelectorAll('.accordion-item');
 
-  var redSVG = '<svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    '<polyline points="4,8 12,16 18,12 26,22" stroke="#f44336" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
-    '<polyline points="20,22 26,22 26,16" stroke="#f44336" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
-    '</svg>';
-
-  var greenSVG = '<svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    '<polyline points="4,24 12,16 18,20 26,10" stroke="#4caf50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
-    '<polyline points="20,10 26,10 26,16" stroke="#4caf50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
-    '</svg>';
-
-  var sizes = ['tiny', 'small', 'small', 'medium', 'medium', 'large'];
-
-  var cols = window.innerWidth > 768 ? 6 : 4;
-  var rows = window.innerWidth > 768 ? 8 : 10;
-
-  var cellWidth = 100 / cols;
-  var cellHeight = 100 / rows;
-
-  for (var row = 0; row < rows; row++) {
-    for (var col = 0; col < cols; col++) {
-      var icon = document.createElement('div');
-      var size = sizes[Math.floor(Math.random() * sizes.length)];
-
-      var isGreen = (row + col) % 2 === 0;
-      if (Math.random() < 0.3) isGreen = !isGreen;
-
-      var color = isGreen ? 'green' : 'red';
-      var slow = Math.random() > 0.6 ? 'slow' : '';
-
-      icon.className = 'trendline-icon ' + size + ' ' + color + (slow ? ' ' + slow : '');
-      icon.innerHTML = isGreen ? greenSVG : redSVG;
-
-      var baseX = col * cellWidth + cellWidth / 2;
-      var baseY = row * cellHeight + cellHeight / 2;
-
-      var jitterX = (Math.random() - 0.5) * cellWidth * 0.6;
-      var jitterY = (Math.random() - 0.5) * cellHeight * 0.6;
-
-      icon.style.left = (baseX + jitterX) + '%';
-      icon.style.top = (baseY + jitterY) + '%';
-
-      icon.style.setProperty('--duration', (4 + Math.random() * 6) + 's');
-      icon.style.setProperty('--delay', (Math.random() * 5) + 's');
-
-      var baseScale = size === 'tiny' ? 0.6 : size === 'small' ? 0.8 : size === 'medium' ? 1 : 1.2;
-      icon.style.transform = 'scale(' + baseScale + ')';
-
-      container.appendChild(icon);
-    }
+  function openItem(item) {
+    var panel = item.querySelector('.accordion-panel');
+    var header = item.querySelector('.accordion-header');
+    item.classList.add('open');
+    header.setAttribute('aria-expanded', 'true');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
   }
+
+  function closeItem(item) {
+    var panel = item.querySelector('.accordion-panel');
+    var header = item.querySelector('.accordion-header');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    // force reflow so the browser registers the current height before collapsing
+    panel.offsetHeight;
+    requestAnimationFrame(function() {
+      panel.style.maxHeight = '0px';
+    });
+    item.classList.remove('open');
+    header.setAttribute('aria-expanded', 'false');
+  }
+
+  items.forEach(function(item) {
+    var header = item.querySelector('.accordion-header');
+    header.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
+      items.forEach(function(other) {
+        if (other !== item && other.classList.contains('open')) closeItem(other);
+      });
+      if (isOpen) {
+        closeItem(item);
+      } else {
+        openItem(item);
+      }
+    });
+  });
+
+  // ---- Slight parallax drift on the tiled grid background ----
+  var gridEl = document.getElementById('grid-parallax');
+  var ticking = false;
+
+  function updateParallax() {
+    var offset = window.scrollY * 0.15;
+    gridEl.style.transform = 'translateY(' + offset + 'px)';
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 </script>
 
