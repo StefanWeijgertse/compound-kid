@@ -10,8 +10,8 @@
     --deeper-blue: #020010;
     --gold: #ffb311;
     --cream: #fbfaf3;
-    --burgundy: #6e0f22;
-    --game-blue: #2f6fed;
+    --red: #4f0102;
+    --game-blue: #0c254c;
   }
 
   /* Self-hosted headline + body fonts (same family as the game itself).
@@ -58,7 +58,9 @@
   /* ============================================
      BACKGROUND LAYERS
      Layer 0: solid galaxy gradient (fixed)
-     Layer 1: tiled Grid_Blue.webp with a slight parallax drift
+     Layer 1: tiled Grid_Blue.webp, scrolled via background-position so it
+              tiles infinitely and never runs out of image no matter how
+              tall the page gets when an accordion section is open
      Layer 10: actual content
      ============================================ */
   .galaxy-bg {
@@ -78,7 +80,7 @@
       var(--deep-blue);
   }
 
-  .grid-parallax-wrap {
+  .grid-parallax {
     position: fixed;
     top: 0;
     left: 0;
@@ -86,20 +88,11 @@
     height: 100vh;
     height: 100svh;
     z-index: 1;
-    overflow: hidden;
     pointer-events: none;
-  }
-
-  .grid-parallax-img {
-    position: absolute;
-    top: -15%;
-    left: 0;
-    width: 100%;
-    height: 130%;
     background-image: url('Grid_Blue.webp');
     background-repeat: repeat;
+    background-position: 0px 0px;
     opacity: 0.32;
-    will-change: transform;
   }
 
   /* ============================================
@@ -115,16 +108,16 @@
 
   header {
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto 28px;
   }
 
   h1 {
     font-family: 'PPNeueBit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 2.6rem;
+    line-height: 1.3;
     margin: 0;
-    line-height: 1.05;
   }
 
   .cover {
@@ -140,26 +133,26 @@
     max-width: 680px;
     margin: 0 auto 40px;
     text-align: left;
-    font-size: 1.3rem;
-    line-height: 1.85;
+    font-size: 1rem;
+    line-height: 1.75;
     color: rgba(251, 250, 243, 0.94);
     padding-bottom: 36px;
     border-bottom: 1px solid rgba(255, 179, 17, 0.25);
   }
 
-  .intro p { margin: 0 0 20px; color: rgba(251, 250, 243, 0.94); }
+  .intro p { margin: 0 0 16px; color: rgba(251, 250, 243, 0.94); }
   .intro p:last-child { margin-bottom: 0; }
   .intro strong { color: var(--gold); }
 
   /* ============================================
      OUTLINED GAME-STYLE HEADERS
      ============================================ */
-  .stroke-gold-burgundy {
-    color: var(--burgundy);
-    -webkit-text-stroke: 3px var(--gold);
-    text-stroke: 3px var(--gold);
+  .stroke-gold-red {
+    color: var(--gold);
+    -webkit-text-stroke: 2px var(--red);
+    text-stroke: 2px var(--red);
     paint-order: stroke fill;
-    filter: drop-shadow(0 0 22px rgba(255, 179, 17, 0.35));
+    filter: drop-shadow(0 0 20px rgba(244, 67, 54, 0.35));
   }
 
   .stroke-blue-white {
@@ -171,7 +164,7 @@
   }
 
   @supports not (-webkit-text-stroke: 1px black) {
-    .stroke-gold-burgundy { color: var(--gold); }
+    .stroke-gold-red { color: var(--gold); }
     .stroke-blue-white { color: var(--cream); }
   }
 
@@ -234,16 +227,16 @@
 
   .accordion-panel-inner {
     padding: 0 26px 30px;
+    font-size: 1rem;
   }
 
   @media (max-width: 600px) {
     .accordion-header { padding: 18px 20px; }
     .accordion-panel-inner { padding: 0 20px 24px; }
     .accordion-title { font-size: 1.55rem; }
-    h1 { font-size: 2.9rem; }
+    h1 { font-size: 1.9rem; }
     .wrap { padding: 36px 16px 80px; }
     .cover { width: 74%; }
-    .intro { font-size: 1.15rem; }
   }
 
   h2 {
@@ -308,23 +301,22 @@
 <body>
 
 <div class="galaxy-bg"></div>
-<div class="grid-parallax-wrap">
-  <div class="grid-parallax-img" id="grid-parallax"></div>
-</div>
+<div class="grid-parallax" id="grid-parallax"></div>
 
 <div class="wrap">
 
   <header>
-    <h1 class="stroke-gold-burgundy">Every rich person in the world became a Compound Kid before their wealth exploded. Now, you can too.</h1>
+    <h1 class="stroke-gold-red">Every rich person in the world became a Compound Kid before their wealth exploded. Now, you can too.</h1>
   </header>
 
   <img class="cover" src="Compound Kid - Cover.webp" alt="Compound Kid cover art">
 
   <div class="intro">
-    <p>Here is a fact most people never feel until it is too late to use it. Money that compounds does not grow in a straight line. It grows in a curve: flat for a long time, then suddenly steep. Warren Buffett earned the vast majority of his fortune after most people retire, not because he got smarter later in life, but because compounding rewards time far more than it rewards timing.</p>
-    <p><strong>Compound Kid</strong> turns that curve into a game you can feel in under a minute. Tap to jump, collect coins, and watch your in-game value compound with every single one you grab. Not add. Compound. The tenth coin is worth more than the first, and that difference is not an accident. It is the entire lesson, built directly into the physics of the game.</p>
-    <p>There is no tutorial to sit through and no account to create. You open it, you tap, and within your first few runs you will lose, more than once, badly. That is by design too. Every attempt sharpens your timing, and every high score you beat proves the same idea that got Compound Kid made in the first place: small, repeated gains add up to something that looks nothing like small, once you give it room to grow.</p>
-    <p>Nothing in the game is financial advice, and it was never meant to be. It is a short, free arcade game with a real idea sitting underneath it, built for anyone who has heard the phrase "compound interest" and nodded along without quite feeling what it meant. Now you can feel it, one coin at a time.</p>
+    <p>Not by reading another book about compound interest, or by sitting through a course that tells you to "start early" and leaves you no better able to feel what that actually means. You become a Compound Kid by playing, on your phone, right now.</p>
+    <p>Nobody gets rich by understanding compound interest as a formula and seeing projections on a spreadsheet. People get rich by experiencing the long flat stretch where nothing seems to be happening, abruptly followed by a moment where everything suddenly accelerates. Most people quit during the flat part. They never see the part that made the wait worth it, because in real life that part can take years. In Compound Kid, it takes less than two and a half minute.</p>
+    <p>In compound kid every coin you collect does not just add to your score, it compounds all the coins before it. As a result, your tenth coin is worth more than your first, and your fiftieth is worth more than those first ten combined. You will watch the effect happen to a number on your own screen, produced by your own reflexes, and eventually something will click that no book chapter ever managed. That click is yours to keep, and you cannot unfeel it once you have felt it.</p>
+    <p>That is the entire reason this game exists. Not to teach you a lesson you already knew about in theory, but to hand you the one thing theory cannot give you: the gut sense of what waiting long enough actually buys you. You will probably lose quickly your first few runs, and you're supposed to. Every failed run sharpens your timing the same way every year of staying invested sharpens a portfolio: through repetition, not luck. And every time you beat your own high score, you are proving the same idea twice: once on the screen, and once in a part of your brain that now believes it, because it watched it happen.</p>
+    <p>Play Compound Kid once, and you will understand why the name is not a metaphor. You will actually become one.</p>
   </div>
 
   <div class="accordion" id="accordion">
@@ -529,12 +521,18 @@
   });
 
   // ---- Slight parallax drift on the tiled grid background ----
+  // Driven by background-position (not a transform on a bounded element),
+  // so the tile repeats infinitely no matter how tall the page gets when
+  // an accordion section is open, there is no edge to run out of.
+  // Negative offset makes the grid drift the same direction as the
+  // content as you scroll (upward), just slower, so it "follows" the
+  // scroll instead of appearing to fight it.
   var gridEl = document.getElementById('grid-parallax');
   var ticking = false;
 
   function updateParallax() {
-    var offset = window.scrollY * 0.15;
-    gridEl.style.transform = 'translateY(' + offset + 'px)';
+    var offset = -(window.scrollY * 0.15);
+    gridEl.style.backgroundPosition = '0px ' + offset + 'px';
     ticking = false;
   }
 
